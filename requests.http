@@ -17,12 +17,14 @@ Content-Type: application/json
 }
 
 ### Products update
-PATCH http://localhost:3000/products/5
+PATCH http://localhost:3000/products/4
 Content-Type: application/json
 
 {
-  "name": "Updated name",
-  "description": "Updated description",
-  "image_url": "Updated URL",
-  "price": "2"
+  "name": "Changed name",
+  "image_url": "Changed URL"
 }
+
+### Products delete
+
+DELETE http://localhost:3000/products/5
