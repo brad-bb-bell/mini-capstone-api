@@ -17,7 +17,8 @@ class ProductsController < ApplicationController
       price: params["price"],
     )
     product.save
-    render json: product.as_json
+    @product = product
+    render template: "products/show"
   end
 
   def update
@@ -28,8 +29,8 @@ class ProductsController < ApplicationController
     product.image_url = params["image_url"] || product.image_url
     product.price = params["price"] || product.price
     product.save
-    render json: product.as_json
-    # render json: { message: "we updated it!" }
+    @product = product
+    render template: "products/show"
   end
 
   def destroy
