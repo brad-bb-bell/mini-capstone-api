@@ -9,6 +9,7 @@
   price: product.price,
   is_discounted?: product.is_discounted?,
   tax: product.tax,
-  total: product.total
+  total: product.total,
+  quantity: product.quantity
   }
 end
