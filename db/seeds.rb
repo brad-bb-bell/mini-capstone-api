@@ -11,3 +11,5 @@ Product.create(name: "Fat tire bicycle", description: "A bicycle with big tires 
 Product.create(name: "Backpacking tent", description: "A small, lightweight tent best used for backpacking", image_url: "https://www.rei.com/media/c76e9b8f-c763-4623-9b8b-69873ccc5229?size=784x588", price: 359.95, quantity: 1)
 
 Product.create(name: "Sleeping bag", description: "Warm and packable sleeping bag", image_url: "https://cdn.shopify.com/s/files/1/1416/5622/products/1_71378391-fa39-4d3e-a7ba-7c0cf8e8a064_1080x.jpg?v=1622719073", price: 299.99, quantity: 1)
+
+# Product.create(name: "test", description: "not too short", image_url: "example.com", price: 489.99, quantity: 1)
