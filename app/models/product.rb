@@ -16,4 +16,8 @@ class Product < ApplicationRecord
   def total
     price * 1.09
   end
+
+  def supplier
+    Supplier.find_by(id: supplier_id)
+  end
 end
