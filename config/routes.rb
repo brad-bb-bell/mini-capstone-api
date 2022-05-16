@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   #authentication routes
   post "/users" => "users#create"
   post "/sessions" => "sessions#create"
+
+  ###orders
+  get "/orders/:id" => "orders#show"
+  post "/orders" => "orders#create"
 end
