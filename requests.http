@@ -1,8 +1,9 @@
 ### Products index
 GET http://localhost:3000/products.json
 
+
 ### Products show
-GET http://localhost:3000/products/2.json
+GET http://localhost:3000/products/1.json
 
 ### Products create
 
@@ -29,3 +30,41 @@ Content-Type: application/json
 ### Products delete
 
 DELETE http://localhost:3000/products/12.json
+
+### Users create (signup)
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "email": "test@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
+
+
+
+# Example HTTP request (with a JWT in the request headers)
+
+# ### Photos create
+# POST http://localhost:3000/photos.json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjozLCJleHAiOjE2Mjk5OTI4NjR9.G2ExsrDYn3oE0vJkvm4T6Po2GbNpH5cqTEaVPVuK_MA
+# Content-Type: application/json
+
+# {
+#   "name": "Test name",
+#   "width": 640,
+#   "height": 480
+# }
+# Any web request that includes a valid JWT in the headers in this fashion has access to the current_user variable in both the controller and the view.
+
+# To logout, simply remove the JWT from any Authorization request headers.
