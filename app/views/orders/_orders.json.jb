@@ -1,6 +1,11 @@
 {
+  id: order.id,
   user_id: order.user_id,
-  order_id: order.id,
   product_id: order.product_id,
   quantity: order.quantity,
+  subtotal: order.subtotal,
+  tax: order.tax,
+  total: order.total,
+  created_at: order.created_at.strftime("%m-%e-%y %H:%M"),
+  updated_at: order.updated_at.strftime("%m-%e-%y %H:%M"),
 }
