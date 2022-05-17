@@ -38,8 +38,8 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Third User",
-  "email": "test3@test.com",
+  "name": "Fourth User",
+  "email": "test4@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -51,7 +51,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "test4@test.com",
   "password": "password"
 }
 
@@ -59,35 +59,18 @@ Content-Type: application/json
 
 ### Orders index
 GET http://localhost:3000/orders.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTI4OTE2NTN9.Oz7JleFTa7d3j54eR4zh6GwKWRkw-0TZc2yyqy64PQc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NTI4OTY3NzV9.k8viYnOG8JBmrzm8iGHb34slSuwJjbRTqWiqhi_jUww
 
 ### Orders show
-GET http://localhost:3000/orders/10.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTI4OTE2NTN9.Oz7JleFTa7d3j54eR4zh6GwKWRkw-0TZc2yyqy64PQc
+GET http://localhost:3000/orders/20.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NTI4OTY3NzV9.k8viYnOG8JBmrzm8iGHb34slSuwJjbRTqWiqhi_jUww
 
 ### Orders create
 POST http://localhost:3000/orders.json
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTI4OTE2NTN9.Oz7JleFTa7d3j54eR4zh6GwKWRkw-0TZc2yyqy64PQc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE2NTI4OTY3NzV9.k8viYnOG8JBmrzm8iGHb34slSuwJjbRTqWiqhi_jUww
 
 { 
-  "product_id": 2,
-  "quantity": 2
+  "product_id": 3,
+  "quantity": 5
 }
-
-
-# Example HTTP request (with a JWT in the request headers)
-
-# ### Photos create
-# POST http://localhost:3000/photos.json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjozLCJleHAiOjE2Mjk5OTI4NjR9.G2ExsrDYn3oE0vJkvm4T6Po2GbNpH5cqTEaVPVuK_MA
-# Content-Type: application/json
-
-# {
-#   "name": "Test name",
-#   "width": 640,
-#   "height": 480
-# }
-# Any web request that includes a valid JWT in the headers in this fashion has access to the current_user variable in both the controller and the view.
-
-# To logout, simply remove the JWT from any Authorization request headers.

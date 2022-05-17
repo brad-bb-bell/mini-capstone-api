@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
   def index
-    if Order.find_by(user_id: current_user)
-      orders = Order.where(user_id: current_user)
+    if Order.find_by(user_id: current_user.id)
+      @orders = current_user.orders
       render template: "orders/index"
     else
       render json: { message: "You have not placed any orders." }
@@ -12,8 +13,7 @@ class OrdersController < ApplicationController
     if current_user
       product = Product.find_by(id: params["product_id"])
       subtotal = product.price * params["quantity"]
-      p product.price
-      order = Order.new(
+      @order = Order.new(
         user_id: current_user.id,
         product_id: params["product_id"],
         quantity: params["quantity"],
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
         tax: subtotal * 0.09,
         total: subtotal * 1.09,
       )
-      if order.save
+      if @order.save
         render template: "orders/show"
       else
         render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    order = Order.find_by(id: params["id"])
-    if current_user[:id] == order.user_id
+    @order = Order.find_by(id: params["id"])
+    if current_user.id == @order.user_id
       render template: "orders/show"
     else
       render json: { message: "You do not have access to this order number." }
