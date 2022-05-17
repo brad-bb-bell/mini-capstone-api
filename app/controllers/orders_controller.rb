@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
-    render template: "orders/index"
+    if Order.find_by(user_id: current_user)
+      @orders = Order.where(user_id: current_user)
+      render template: "orders/index"
+    else
+      render json: { message: "You have not placed any orders." }
+    end
   end
 
   def create
@@ -10,6 +14,7 @@ class OrdersController < ApplicationController
         user_id: current_user.id,
         product_id: params["product_id"],
         quantity: params["quantity"],
+        # subtotal: params["quantity"] *
       )
       if order.save
         @order = order
@@ -24,6 +29,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: params["id"])
-    render template: "orders/show"
+    if current_user[:id] == @order.user_id
+      render template: "orders/show"
+    else
+      render json: { message: "You do not have access to this order number." }
+    end
   end
 end
