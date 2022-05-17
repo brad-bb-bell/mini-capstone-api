@@ -31,6 +31,8 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/products/12.json
 
+######################################################
+
 ### Users create (signup)
 POST http://localhost:3000/users.json
 Content-Type: application/json
@@ -42,6 +44,8 @@ Content-Type: application/json
   "password_confirmation": "password"
 }
 
+######################################################
+
 ### Sessions create (login)
 POST http://localhost:3000/sessions.json
 Content-Type: application/json
@@ -51,18 +55,23 @@ Content-Type: application/json
   "password": "password"
 }
 
+######################################################
+
+### Orders index
+GET http://localhost:3000/orders.json
+
+### Orders show
+GET http://localhost:3000/orders/1.json
+
 ### Orders create
 POST http://localhost:3000/orders.json
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTI4MTk0OTN9.c_GvHUsjLyF9fW5xEL7IlJsPZjvrpx5B5eL81kbq-CI
 
 { 
-  "product_id": 1,
+  "product_id": 2,
   "quantity": 1
 }
-
-### Orders show
-GET http://localhost:3000/orders/1.json
 
 
 # Example HTTP request (with a JWT in the request headers)

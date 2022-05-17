@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+    render template: "orders/index"
+  end
+
   def create
     if current_user
       order = Order.new(
