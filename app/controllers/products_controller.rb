@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    products = Product.all
     render template: "products/index"
   end
 
   def show
-    @product = Product.find_by(id: params["id"])
+    product = Product.find_by(id: params["id"])
     render template: "products/show"
   end
 
@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
       price: params["price"],
     )
     if product.save
-      @product = product
       render template: "products/show"
     else
       render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
@@ -30,7 +29,7 @@ class ProductsController < ApplicationController
     product.description = params["description"] || product.description
     product.price = params["price"] || product.price
     if product.save
-      @product = product
+      product = product
       render template: "products/show"
     else
       render json: { errors: product.errors.full_messages }, status: :unprocessable_entity

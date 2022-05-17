@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def index
     if Order.find_by(user_id: current_user)
-      @orders = Order.where(user_id: current_user)
+      orders = Order.where(user_id: current_user)
       render template: "orders/index"
     else
       render json: { message: "You have not placed any orders." }
@@ -10,14 +10,18 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
+      product = Product.find_by(id: params["product_id"])
+      subtotal = product.price * params["quantity"]
+      p product.price
       order = Order.new(
         user_id: current_user.id,
         product_id: params["product_id"],
         quantity: params["quantity"],
-        # subtotal: params["quantity"] *
+        subtotal: subtotal,
+        tax: subtotal * 0.09,
+        total: subtotal * 1.09,
       )
       if order.save
-        @order = order
         render template: "orders/show"
       else
         render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
@@ -28,8 +32,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(id: params["id"])
-    if current_user[:id] == @order.user_id
+    order = Order.find_by(id: params["id"])
+    if current_user[:id] == order.user_id
       render template: "orders/show"
     else
       render json: { message: "You do not have access to this order number." }
