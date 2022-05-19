@@ -1,8 +1,13 @@
 class CartedProductsController < ApplicationController
+  def index
+    @carted_products = CartedProduct.find_by(status: "carted")
+    render json: { carted_products: @carted_products.as_json }
+  end
+
   def create
     if current_user
       @carted_product = CartedProduct.new(
-        user_id: current_user[:id],
+        user_id: current_user.id,
         product_id: params["product_id"],
         quantity: params["quantity"],
         status: "carted",

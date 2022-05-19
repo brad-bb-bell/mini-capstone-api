@@ -79,6 +79,11 @@ Authorization: Bearer {{jwt}}
 
 ######################################################
 
+### Carted_Products index
+
+GET http://localhost:3000/carted_products
+Authorization: Bearer {{jwt}}
+
 ### Carted_Products create
 POST http://localhost:3000/carted_products
 Content-Type: application/json
