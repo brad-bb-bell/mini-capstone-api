@@ -72,11 +72,6 @@ POST http://localhost:3000/orders.json
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
-{ 
-  "product_id": 3,
-  "quantity": 5
-}
-
 ######################################################
 
 ### Carted_Products index
@@ -90,6 +85,6 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-  "product_id": 1,
-  "quantity": 2
+  "product_id": 3,
+  "quantity": 3
 }

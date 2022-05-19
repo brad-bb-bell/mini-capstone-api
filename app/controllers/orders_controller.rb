@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user
+
   def index
     if Order.find_by(user_id: current_user.id)
       @orders = current_user.orders
@@ -11,12 +12,13 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
-      product = Product.find_by(id: params["product_id"])
-      subtotal = product.price * params["quantity"]
+      subtotal = 0
+      carted_products = CartedProduct.where(status: "carted")
+      carted_products.each do |carted_product|
+        subtotal += carted_product.product.price * carted_product.quantity
+      end
       @order = Order.new(
         user_id: current_user.id,
-        product_id: params["product_id"],
-        quantity: params["quantity"],
         subtotal: subtotal,
         tax: subtotal * 0.09,
         total: subtotal * 1.09,
@@ -24,7 +26,7 @@ class OrdersController < ApplicationController
       if @order.save
         render template: "orders/show"
       else
-        render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
       end
     else
       render json: { message: "You must me logged in to place an order." }
