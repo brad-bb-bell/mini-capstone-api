@@ -2,13 +2,14 @@
   id: product.id,
   name: product.name,
   description: product.description,
-  price: product.price,
+  price: product.price.round(2),
   is_discounted?: product.is_discounted?,
   tax: product.tax,
   total: product.total,
   quantity: product.quantity,
   images: product.images,
+  categories: product.categories,
   supplier: product.supplier,
   created_at: product.created_at,
-  updated_at: product.updated_at
+  updated_at: product.updated_at,
 }
