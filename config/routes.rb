@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
+  ###product routes
   get "/products" => "products#index"
   get "/products/:id" => "products#show"
   post "/products" => "products#create"
@@ -18,7 +14,7 @@ Rails.application.routes.draw do
   delete "/suppliers/:id" => "suppliers#destroy"
   #created routes but need to work on controller
 
-  #authentication routes
+  ###authentication routes
   post "/users" => "users#create"
   post "/sessions" => "sessions#create"
 
@@ -26,4 +22,7 @@ Rails.application.routes.draw do
   get "/orders/" => "orders#index"
   get "/orders/:id" => "orders#show"
   post "/orders" => "orders#create"
+
+  ###carted_products
+  post "/carted_products" => "carted_products#create"
 end

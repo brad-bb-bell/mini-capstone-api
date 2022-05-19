@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NTI4OTk3NDV9.4pPdOniOm8n5r9WmDCL3X5CEHDQojpPyAd2JjnAUfmE
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTMwNjg5MTd9.gkkMk2iXGJrojeOVCva9TPSqUI8s62n4vbRlceGkvDw
 
 ### Products index
 GET http://localhost:3000/products.json?category=camping
@@ -53,7 +53,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "test2@test.com",
+  "email": "test@test.com",
   "password": "password"
 }
 
@@ -75,4 +75,16 @@ Authorization: Bearer {{jwt}}
 { 
   "product_id": 3,
   "quantity": 5
+}
+
+######################################################
+
+### Carted_Products create
+POST http://localhost:3000/carted_products
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "product_id": 1,
+  "quantity": 2
 }
