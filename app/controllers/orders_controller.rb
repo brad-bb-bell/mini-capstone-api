@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   def create
     if current_user
       subtotal = 0
-      carted_products = CartedProduct.where(status: "carted")
+      carted_products = current_user.carted_products.where(status: "carted")
       carted_products.each do |carted_product|
         subtotal += carted_product.product.price * carted_product.quantity
       end
@@ -24,6 +24,11 @@ class OrdersController < ApplicationController
         total: subtotal * 1.09,
       )
       if @order.save
+        carted_products.each do |carted_product|
+          carted_product.status = "purchased"
+          carted_product.order_id = @order.id
+          carted_product.save
+        end
         render template: "orders/show"
       else
         render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity

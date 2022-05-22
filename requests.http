@@ -1,7 +1,9 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTMwNjg5MTd9.gkkMk2iXGJrojeOVCva9TPSqUI8s62n4vbRlceGkvDw
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTMzMzE2MDN9.vKlXNfTEngkg2CdCDONWvyL5Iq-TNfPZlFBP3wWwOY8
+
+######################################################
 
 ### Products index
-GET http://localhost:3000/products.json?category=camping
+GET http://localhost:3000/products.json
 
 
 ### Products show
@@ -85,6 +87,10 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-  "product_id": 3,
-  "quantity": 3
+  "product_id": 2,
+  "quantity": 1
 }
+
+### Carted_Products destroy
+DELETE http://localhost:3000/carted_products/5.json
+Authorization: Bearer {{jwt}}
