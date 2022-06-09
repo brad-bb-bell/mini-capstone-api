@@ -22,11 +22,12 @@ class ProductsController < ApplicationController
         name: params["name"],
         description: params["description"],
         price: params["price"],
+        supplier_id: params["supplier_id"],
       )
-      if product.save
+      if @product.save
         render template: "products/show"
       else
-        render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @product.errors.full_messages }, status: :unprocessable_entity
       end
     else
       render json: {}, status: :unauthorized

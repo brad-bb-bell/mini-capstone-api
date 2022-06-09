@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTMzMzE2MDN9.vKlXNfTEngkg2CdCDONWvyL5Iq-TNfPZlFBP3wWwOY8
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTQ4MDcwMjN9.7OcHlZMWVYh-AK_7qEDhzbYid8KdK8RVGSPJhzEyALY
 
 ######################################################
 
@@ -13,17 +13,19 @@ GET http://localhost:3000/products/1.json
 
 POST http://localhost:3000/products.json
 Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 {
   "name": "test name",
   "description": "test description",
-  "image_url": "test url",
-  "price": "1"
+  "price": "1",
+  "supplier_id": "1"
 }
 
 ### Products update
 PATCH http://localhost:3000/products/12.json
 Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 {
   "name": "Changed name",
@@ -34,6 +36,7 @@ Content-Type: application/json
 ### Products delete
 
 DELETE http://localhost:3000/products/12.json
+Authorization: Bearer {{jwt}}
 
 ######################################################
 
@@ -66,7 +69,7 @@ GET http://localhost:3000/orders.json
 Authorization: Bearer {{jwt}}
 
 ### Orders show
-GET http://localhost:3000/orders/13.json
+GET http://localhost:3000/orders/1.json
 Authorization: Bearer {{jwt}}
 
 ### Orders create
@@ -92,5 +95,5 @@ Authorization: Bearer {{jwt}}
 }
 
 ### Carted_Products destroy
-DELETE http://localhost:3000/carted_products/5.json
+DELETE http://localhost:3000/carted_products/1.json
 Authorization: Bearer {{jwt}}
